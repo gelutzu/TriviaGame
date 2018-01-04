@@ -8,19 +8,22 @@
     //  the "run" function
     var intervalId;
 
-    $("#show-number").html("<h2>" + number + "</h2>");
+    
 
 
-    //  When the stop button gets clicked, run the stop function.
-    $("#stop").on("click", stop);
+    //  When the start button gets clicked, run the run function.
+    $("#start").on("click", run);
 
-    //  When the resume button gets clicked, execute the run function.
-    $("#resume").on("click", run);
+    
 
     //  The run function sets an interval
     //  that runs the decrement function once a second.
     function run() {
       intervalId = setInterval(decrement, 1000);
+      $("#container").css("display", "block");
+
+    
+
     }
 
     //  The decrement function.
@@ -30,7 +33,7 @@
       number--;
 
       //  Show the number in the #show-number tag.
-      $("#show-number").html("<h2>" + number + "</h2>");
+      $("#show-number").html("<h2>Time remaining: " + number + " seconds </h2>");
 
 
       //  Once number hits zero...
@@ -53,5 +56,14 @@
       clearInterval(intervalId);
     }
 
-    //  Execute the run function.
-    run();
+    function showQuestion() {
+      var x = document.getElementById("questions");
+      if (x.style.display === "none") {
+          x.style.display = "block";
+      } else {
+          x.style.display = "none";
+      }
+  }
+
+  
+  
